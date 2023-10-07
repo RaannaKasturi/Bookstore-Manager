@@ -1,23 +1,9 @@
 #include <iostream>
 #include <string>
-#include <headerfiles\tabulate.hpp>
+#include "tabulate.hpp"
 
 using namespace tabulate;
 using namespace std;
-/*
-int main() {
-    int tid, tcost, cnum;
-    char cname[40];
-
-    tid = 1;
-    tcost = 25;
-    cnum = 234;
-
-    cout << "Enter cname: ";
-    cin >> cname;
-
-
-}*/
 
 int main() {
   Table movies;

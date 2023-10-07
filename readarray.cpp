@@ -30,12 +30,19 @@ void searchBook(){ //searchbook function
         
         if (BookID >= 1 && BookID <= 10) { //ranging the array search from 1 to 10
             int arrayIndex = BookID - 1;
+
+            string bookID, bookName, bookAuthor, bookPrice;
+            bookID = books[arrayIndex][0];
+            bookName = books[arrayIndex][1];
+            bookAuthor = books[arrayIndex][2];
+            bookPrice = books[arrayIndex][3];
+
             
             cout << "Book Details:" << endl; //displaying book details
-            cout << "Book ID: " << books[arrayIndex][0] << endl;
-            cout << "Book Name: " << books[arrayIndex][1] << endl;
-            cout << "Book Author: " << books[arrayIndex][2] << endl;
-            cout << "Book Price: ₹" << books[arrayIndex][3] << endl;
+            cout << "Book ID: " << bookID << endl;
+            cout << "Book Name: " << bookName << endl;
+            cout << "Book Author: " << bookAuthor << endl;
+            cout << "Book Price: ₹" << bookPrice << endl;
         } 
         else {
             cout << "Invalid Book ID. Please enter a number between 1 and 10." << endl;
