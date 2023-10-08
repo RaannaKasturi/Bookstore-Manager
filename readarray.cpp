@@ -46,7 +46,7 @@ void searchBook(){ //searchbook function
         } 
         else {
             cout << "Invalid Book ID. Please enter a number between 1 and 10." << endl;
-            }
+        }
     }
 }
 
