@@ -9,12 +9,10 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-I",
-                "${fileDirname}/include"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "C:\\msys64\\ucrt64\\bin"
             },
             "problemMatcher": [
                 "$gcc"
