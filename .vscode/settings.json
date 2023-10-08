@@ -2,6 +2,7 @@
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.default.compilerPath": "",
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string": "cpp"
     }
 }
