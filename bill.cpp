@@ -2,8 +2,7 @@
 #include <string>
 using namespace std;
 
-void print_bill()
-{
+void print_bill() {
     string bill[] = {"1","Prarthi","9820138387","Book1","Author1","120","3"};
     // Customer id, name, phone number, book name, price per book, quantity
 

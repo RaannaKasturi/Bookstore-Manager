@@ -16,7 +16,7 @@ string books[][4] = { //books array
     {"10", "Book 10", "Author 2", "24"}
 };
 
-void searchBook(){ //searchbook function
+void searchBook() { //searchbook function
     while (true) { //take user input for BookID
         cout << "Enter 0 to exit the Program!" << endl;
         cout << "Enter Book ID: ";
@@ -37,7 +37,6 @@ void searchBook(){ //searchbook function
             bookAuthor = books[arrayIndex][2];
             bookPrice = books[arrayIndex][3];
 
-            
             cout << "Book Details:" << endl; //displaying book details
             cout << "Book ID: " << bookID << endl;
             cout << "Book Name: " << bookName << endl;
