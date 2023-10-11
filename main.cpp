@@ -1,6 +1,6 @@
 #include <iostream>
 #include <conio.h>
-#include <string>
+#include <string.h>
 #include <regex>
 
 using namespace std;
@@ -18,38 +18,36 @@ string books[][4] = { //books array
     {"10", "Book 10", "Author 2", "24"}
 };
 
-void searchBook(){ //searchbook function
-    while (true) { //take user input for BookID
-        cout << "Enter 0 to exit the Program!" << endl;
-        cout << "Enter Book ID: ";
-        int BookID;
+int BookID;
+int arrayIndex = BookID - 1;
+string bookID = books[arrayIndex][0];
+string bookName = books[arrayIndex][1];
+string bookAuthor = books[arrayIndex][2];
+string bookPrice = books[arrayIndex][3];
+
+void searchBook() { //searchbook function
+    //while (true) { //take user input for BookID
+        cout << "Enter 0 to exit the Program!" << "\nEnter Book ID: ";
         cin >> BookID;
 
         if (BookID == 0) { //exiting the loop and the program
             cout << "Exiting the program." << endl;
-            break; 
+            //break; 
         }
         
         if (BookID >= 1 && BookID <= 10) { //ranging the array search from 1 to 10
-            int arrayIndex = BookID - 1;
-
-            string bookID, bookName, bookAuthor, bookPrice;
-            bookID = books[arrayIndex][0];
-            bookName = books[arrayIndex][1];
-            bookAuthor = books[arrayIndex][2];
-            bookPrice = books[arrayIndex][3];
 
             
             cout << "Book Details:" << endl; //displaying book details
             cout << "Book ID: " << bookID << endl;
             cout << "Book Name: " << bookName << endl;
             cout << "Book Author: " << bookAuthor << endl;
-            cout << "Book Price: ₹" << bookPrice << endl;
+            cout << "Book Price: ₹" << sbookPrice << endl;
         } 
         else {
             cout << "Invalid Book ID. Please enter a number between 1 and 10." << endl;
         }
-    }
+    //}
 }
 
 string cnum() {
@@ -87,8 +85,9 @@ string cname() {
     return name;
 }
 
+/*
 void print_bill() {
-    string bill[] = {"1","Prarthi","9820138387","Book1","Author1","120","3"};
+    //string bill[] = {"1","Prarthi","9820138387","Book1","Author1","120","3"};
     // Customer id, name, phone number, book name, price per book, quantity
 
     string cid = bill[0];
@@ -98,6 +97,10 @@ void print_bill() {
     string bauthor = bill[4];
     string bprice = bill[5];
     string bquantity = bill[6];
+
+    bill[][];
+    bill[0][1] = "Nayan";
+    bill[1][1] = "Esha";
 
     cout << "***************************************";
     cout << "\nCustomer ID : " << cid;
@@ -109,4 +112,26 @@ void print_bill() {
     cout << "\nTotal Bill : " << stoi(bprice) * stoi(bquantity);
     cout << "\n***************************************" << endl;
 }
+*/
 
+int orderId = 2992720;
+//int bookQuantity = 10;
+//int orderPrice = stoi(bookPrice)*bookQuantity;
+
+void bill()
+{
+    cout << "Order ID: " << orderId;
+    cout << "Customer Name: " << cname();
+    cout << "Customer Number: " << cnum();
+    cout << "Book Details: " << bookName << " - " << bookAuthor << "[" << bookPrice << "]";
+    cout << "Total Price: " << bookPrice;
+}
+
+int main() {
+    cout << "Welcome to Bookstore Manager !" << endl;
+    cname();
+    cnum();
+    searchBook();
+    bill();
+    return 0;
+}
