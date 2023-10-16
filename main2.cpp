@@ -78,14 +78,19 @@ void getBookOrder()
         if (bookID == 0)
         {
             flag = false;
+            break;
             // Exit the loop and proceed to print the Final List of Books purchased
         }
-        else if (bookID >= 1 && bookID <= 10 && i < 10) // Check if i is within array bounds
+        else if (bookID >= 1 && bookID <= 10 && i <= 10) // Check if i is within array bounds
         {
             purchased[i][0] = to_string(bookID);      // BookID
             purchased[i][1] = books[bookID - 1][1];   // Book Name
             purchased[i][2] = books[bookID - 1][2];   // Author Name
             purchased[i][3] = books[bookID - 1][3];   // Book Price
+
+            for (int a = 0; a < 4; a++) {
+                cout << purchased[i][a] << "\t";
+            }
 
             // Simultaneously calculate the total price
             int book_price_converted = stoi(purchased[i][3]);
@@ -95,11 +100,6 @@ void getBookOrder()
         else
         {
             cout << "\nInvalid Book ID. Please enter a number between 1 and 10." << endl;
-        }
-
-        if (!flag)
-        {
-            break;
         }
 
         cout << "\nEnter 0 to exit the program";
