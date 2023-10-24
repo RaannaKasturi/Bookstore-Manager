@@ -106,9 +106,8 @@ void getBookOrder()
         cout << "\nEnter next Book ID for further purchase : ";
     }
 
-    cout << "\nFinal List of books purchased : " << endl;
-
-    // Print the purchased books
+    
+    cout << "\nFinal List of books purchased : " << endl;// Print the purchased books
     for (int j = 0; j < i; j++)
     {
         for (int a = 0; a < 4; a++)
@@ -118,11 +117,15 @@ void getBookOrder()
         cout << endl;
     }
 
+    cout << "------------------------------------------------";
     cout << "\nTotal Price : Rs. " << total_price << endl;
+    cout << "------------------------------------------------";
 }
 
 int main()
 {
+    cout << "### BOOKSTORE MANAGEMENT PROGRAM ###";
+
     cname();
     cnum();
     getBookOrder();
