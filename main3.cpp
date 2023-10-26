@@ -118,8 +118,10 @@ class ShowDetails : public GetDetails // child
     public :
     void orderbill()
     {
+        string purchased[10][4];
+        
         cout << "\nFinal List of books purchased : " << endl;// Print the purchased books
-        for (int j = 0; j < i; j++)
+        for (int j = 0; j < 10; j++)
         {
             for (int a = 0; a < 4; a++)
             {
