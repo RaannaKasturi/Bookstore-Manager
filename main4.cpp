@@ -21,7 +21,7 @@ string books[][4] = { //books array
 class customerDetails // parent
 {
     private:
-        string name;
+        string fname, lname, name;
         string num;
 
     public :
@@ -30,7 +30,9 @@ class customerDetails // parent
             bool valid = false;
             while (!valid) {
                 cout << "Enter name: ";
-                cin >> name;
+                cin >> fname >> lname;
+                //string::strcat(fname, lname);
+                name = fname + " " + lname;
                 if (regex_match(name, pattern)) {
                     valid = true;
                 }
@@ -40,7 +42,7 @@ class customerDetails // parent
             }
             cout << "Name entered: " << name << endl;
             return name;
-            }
+        }
     
         string cnum() {
             regex pattern("(0|91)?[6-9][0-9]{9}");
@@ -142,4 +144,5 @@ int main()
     cout << "Customer Bill:" << totalPrice << endl;
     cout << "------------------------------------------------" << endl;
     return 0;
+    getch();
 }
