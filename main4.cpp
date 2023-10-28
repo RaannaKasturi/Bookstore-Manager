@@ -65,6 +65,7 @@ class customerDetails // parent
 class orderCalc : public customerDetails {
     private:
         int total_price;
+        string orderPrice;
     public :
         int addBook()
         {
@@ -102,6 +103,7 @@ class orderCalc : public customerDetails {
                     int book_price_converted = stoi(purchased[i][3]);
                     total_price += book_price_converted;
                     i++;
+                    orderPrice = to_string(total_price);
                 }
                 else
                 {
@@ -128,29 +130,37 @@ class orderCalc : public customerDetails {
     }
 };
 
-
+class transactions : public orderCalc {
+private:
+    string order_details, custname, custnum;
+    int totalPrice;
+public:
+    void saveTransaction(orderCalc* obj) {
+        cout << obj->addBook() << endl;
+        cout << "working";
+    }
+};
 
 int main()
 {
     cout << "### BOOKSTORE MANAGEMENT PROGRAM ###" << endl;
     string custname, custnum, xyz;
     int totalPrice;
-    orderCalc gd;
+    transactions gd;
     custname = gd.cname();
     custnum = gd.cnum();
     totalPrice = gd.addBook();
-
+    gd.saveTransaction();
+    /*
     fstream f;
     f.open("transaction.txt", ios::app);
     if (!f)
         ofstream MyFile("transaction.txt");
     else {
-        f << "\n" << custname << "\t\t\t\t" << custnum << "\t\t\t\t" << totalPrice;
+        f << custname << "\t\t\t\t" << custnum << "\t\t\t\t" << totalPrice <<"\n";
         cout << "Data appended successfully\n";
         f.close();
-       
     }
-    /*
 
     cout << "------------------------------------------------" << endl;
     cout << "Customer Name:" << custname << endl;
