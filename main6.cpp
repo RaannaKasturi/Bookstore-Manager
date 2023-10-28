@@ -209,17 +209,28 @@ public:
 
 int main() {
     cout << "### BOOKSTORE MANAGEMENT PROGRAM by EB, NK & PK ###" << endl;
-    string custname, custnum, orderID;
-    string purchased[100][4];
-    int totalPrice, bookCount = 0;
 
-    Transactions clt;
-    custname = clt.cname();
-    custnum = clt.cnum();
-    totalPrice = clt.addBook(purchased, bookCount);
-    orderID = clt.generateOrderID();
-    clt.saveTransaction(orderID, custname, custnum, totalPrice, purchased, bookCount);
-    clt.printBill(custname, custnum, orderID, purchased, totalPrice, bookCount);
+    while (true) {
+        string custname, custnum, orderID;
+        string purchased[100][4];
+        int totalPrice, bookCount = 0;
+
+        Transactions clt;
+        custname = clt.cname();
+        custnum = clt.cnum();
+        totalPrice = clt.addBook(purchased, bookCount);
+        orderID = clt.generateOrderID();
+        clt.saveTransaction(orderID, custname, custnum, totalPrice, purchased, bookCount);
+        clt.printBill(custname, custnum, orderID, purchased, totalPrice, bookCount);
+
+        cout << "Enter 0 to exit or any other key to continue: ";
+        int choice;
+        cin >> choice;
+        if (choice == 0) {
+            break; // Exit the loop if the user enters 0
+        }
+    }
+
     getch();
     return 0;
 }
