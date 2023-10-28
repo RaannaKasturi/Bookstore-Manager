@@ -69,10 +69,8 @@ private:
     int total_price;
 
 public:
-    int addBook() {
-        string purchased[100][4];
+    int addBook(string purchased[][4], int &bookCount) {
         bool flag = true;
-        int i = 0;
         total_price = 0;
 
         cout << "Enter 0 to exit the program" << endl;
@@ -85,19 +83,19 @@ public:
             if (bookID == 0) {
                 flag = false;
                 break;
-            } else if (bookID >= 1 && bookID <= 10 && i <= 10) {
-                purchased[i][0] = to_string(bookID);
-                purchased[i][1] = books[bookID - 1][1];
-                purchased[i][2] = books[bookID - 1][2];
-                purchased[i][3] = books[bookID - 1][3];
+            } else if (bookID >= 1 && bookID <= 10 && bookCount < 100) {
+                purchased[bookCount][0] = to_string(bookID);
+                purchased[bookCount][1] = books[bookID - 1][1];
+                purchased[bookCount][2] = books[bookID - 1][2];
+                purchased[bookCount][3] = books[bookID - 1][3];
 
                 for (int a = 0; a < 4; a++) {
-                    cout << purchased[i][a] << "\t";
+                    cout << purchased[bookCount][a] << "\t";
                 }
 
-                int book_price_converted = stoi(purchased[i][3]);
+                int book_price_converted = stoi(purchased[bookCount][3]);
                 total_price += book_price_converted;
-                i++;
+                bookCount++;
             } else {
                 cout << "\nInvalid Book ID. Please enter a number between 1 and 10." << endl;
             }
@@ -107,14 +105,15 @@ public:
         }
 
         cout << "\nFinal List of books purchased: " << endl;
-        for (int j = 0; j < i; j++) {
+        for (int j = 0; j < bookCount; j++) {
             for (int a = 0; a < 4; a++) {
                 cout << purchased[j][a] << "\t";
             }
             cout << endl;
         }
+
         cout << "------------------------------------------------" << endl;
-        cout << "\nTotal Price : Rs. " << total_price << endl;
+        cout << "                 Total Price :  ₹" << total_price << endl;
         cout << "------------------------------------------------" << endl;
 
         return total_price;
@@ -135,20 +134,19 @@ public:
         f.open("transactions.txt", ios::app);
         if (!f) {
             ofstream MyFile("transactions.txt");
-            f << orderID << "\t\t\t" << custname << "\t\t\t" << custnum << "\t\t\t" << totalPrice <<"\n";
-            cout << "Bill Printed Succesfully" << endl;
+            f << orderID << "\t\t\t" << custname << "\t\t\t" << custnum << "\t\t\t₹" << totalPrice <<"\n";
+            cout << "Bill Printed Successfully" << endl;
             f.close();
         }
         else {
-            f << orderID << "\t\t\t" << custname << "\t\t\t" << custnum << "\t\t\t" << totalPrice <<"\n";
-            cout << "Bill Printed Succesfully" << endl;
+            f << orderID << "\t\t\t" << custname << "\t\t\t" << custnum << "\t\t\t₹" << totalPrice <<"\n";
+            cout << "Bill Printed Successfully" << endl;
             f.close();
         }
     }
 
-    void saveTransaction(string orderID, string custname, string custnum, int totalPrice) {
+    void saveTransaction(string orderID, string custname, string custnum, int totalPrice, string purchased[][4], int bookCount) {
         writeTXT(orderID, custname, custnum, totalPrice);
-        cout << endl;
         cout << endl;
         cout << "################################################" << endl;
         cout << "                 ARK Book Store                 " << endl;
@@ -157,44 +155,71 @@ public:
         cout << "Bill No.: " << orderID << endl;
         cout << "Customer Name: " << custname << endl;
         cout << "Customer Number: " << custnum << endl;
-        cout << "Customer Bill: " << totalPrice << endl;
         cout << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "                Purchased Books                 " << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << endl;
+        for (int i = 0; i < bookCount; i++) {
+            for (int a = 0; a < 4; a++) {
+                cout << purchased[i][a] << "\t";
+            }
+            cout << endl;
+        }
+        cout << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "                          Total: ₹" << totalPrice << endl;
         cout << "################################################" << endl;
         cout << endl;
-        cout << endl;
+    }
+
+    void printBill(string custname, string custnum, string orderID, string purchased[100][4], int totalPrice, int bookCount){
+        fstream f;
+        //bookCount = 0;
+        string billNo = "ABS_" + orderID;
+        ofstream MyFile(billNo);
+        f.open(billNo);
+        f << endl;
+        f << "################################################" << endl;
+        f << "                 ARK Book Store                 " << endl;
+        f << "------------------------------------------------" << endl;
+        f << endl;
+        f << "Bill No.: " << orderID << endl;
+        f << "Customer Name: " << custname << endl;
+        f << "Customer Number: " << custnum << endl;
+        f << endl;
+        f << "------------------------------------------------" << endl;
+        f << "                Purchased Books                 " << endl;
+        f << "------------------------------------------------" << endl;
+        f << endl;
+        for (int i = 0; i < bookCount; i++) {
+            for (int a = 0; a < 4; a++) {
+                f << purchased[i][a] << "\t\t";
+            }
+            f << endl;
+        }
+        f << endl;
+        f << "------------------------------------------------" << endl;
+        f << "                           Total: ₹"<< totalPrice << endl;
+        f << "################################################" << endl;
+        f << endl;
+        f.close();
     }
 };
 
 int main() {
     cout << "### BOOKSTORE MANAGEMENT PROGRAM by EB, NK & PK ###" << endl;
     string custname, custnum, orderID;
-    int totalPrice;
+    string purchased[100][4];
+    int totalPrice, bookCount = 0;
 
     Transactions clt;
     custname = clt.cname();
     custnum = clt.cnum();
-    totalPrice = clt.addBook();
+    totalPrice = clt.addBook(purchased, bookCount);
     orderID = clt.generateOrderID();
-    clt.saveTransaction(orderID, custname, custnum, totalPrice);
-
-    fstream f;
-    string billNo = "ABS_" + (orderID);
-    ofstream MyFile(billNo);
-    f.open(billNo);
-    f << "################################################" << endl;
-    f << "                  ARK Book Store                " << endl;
-    f << "------------------------------------------------" << endl;
-    f << endl;
-    f << "Bill No.: " << orderID << endl;
-    f << endl;
-    f << "Customer Name: " << custname << endl;
-    f << "Customer Number: " << custnum << endl;
-    f << endl;
-    f << "Total Price: " << totalPrice << endl;
-    f << endl;
-    f << "################################################" << endl;
-    f << endl;
-    f.close();
+    clt.saveTransaction(orderID, custname, custnum, totalPrice, purchased, bookCount);
+    clt.printBill(custname, custnum, orderID, purchased, totalPrice, bookCount);
     getch();
     return 0;
 }
