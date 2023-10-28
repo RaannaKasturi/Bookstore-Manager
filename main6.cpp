@@ -31,6 +31,7 @@ public:
 
         while (!valid) {
             cout << "Enter name: ";
+            cin >> ws; //removes the whitespace
             getline(cin, name);
 
             if (regex_match(name, pattern)) {
@@ -176,7 +177,7 @@ public:
     void printBill(string custname, string custnum, string orderID, string purchased[100][4], int totalPrice, int bookCount){
         fstream f;
         //bookCount = 0;
-        string billNo = "ABS_" + orderID;
+        string billNo = "ABS_" + orderID + ".txt";
         ofstream MyFile(billNo);
         f.open(billNo);
         f << endl;
@@ -208,7 +209,6 @@ public:
 };
 
 int main() {
-    cout << "### BOOKSTORE MANAGEMENT PROGRAM by EB, NK & PK ###" << endl;
 
     while (true) {
         string custname, custnum, orderID;
@@ -216,6 +216,8 @@ int main() {
         int totalPrice, bookCount = 0;
 
         Transactions clt;
+        cout << "### BOOKSTORE MANAGEMENT PROGRAM by EB, NK & PK ###" << endl;
+
         custname = clt.cname();
         custnum = clt.cnum();
         totalPrice = clt.addBook(purchased, bookCount);
@@ -224,10 +226,15 @@ int main() {
         clt.printBill(custname, custnum, orderID, purchased, totalPrice, bookCount);
 
         cout << "Enter 0 to exit or any other key to continue: ";
-        int choice;
+        string choice;
         cin >> choice;
-        if (choice == 0) {
+        if (choice == "0") {
+            cout << endl;
             break; // Exit the loop if the user enters 0
+        }
+        else{
+            cout << endl;
+            continue;
         }
     }
 
