@@ -1,0 +1,22 @@
+
+################################################
+                 ARK Book Store                 
+------------------------------------------------
+
+Bill No.: ABOID_2
+Customer Name: Nayan Kasturi
+Customer Number: 9876543219
+
+------------------------------------------------
+                Purchased Books                 
+------------------------------------------------
+
+2		Milk and Honey		Rupi Kaur		200		
+4		Nexus Sentinels		Nayan Kasturi		400		
+6		That Sapphire Night		Swastika Jha		600		
+8		The Fault In Our Stars		John Green		800		
+
+------------------------------------------------
+                           Total: ₹2000
+################################################
+

@@ -69,7 +69,7 @@ private:
     int total_price;
 
 public:
-    int addBook() {
+    int orderProcess() {
         string purchased[100][4];
         bool flag = true;
         int i = 0;
@@ -173,7 +173,7 @@ int main() {
     Transactions clt;
     custname = clt.cname();
     custnum = clt.cnum();
-    totalPrice = clt.addBook();
+    totalPrice = clt.orderProcess();
     orderID = clt.generateOrderID();
     clt.saveTransaction(orderID, custname, custnum, totalPrice);
 
