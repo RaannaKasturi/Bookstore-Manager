@@ -67,7 +67,7 @@ class orderCalc : public customerDetails {
         int total_price;
         string orderPrice;
     public :
-        int addBook()
+        int orderProcess()
         {
             string purchased[10][4]; // Define a fixed-size array to store purchased books
 
@@ -136,7 +136,7 @@ private:
     int totalPrice;
 public:
     void saveTransaction(orderCalc* obj) {
-        cout << obj->addBook() << endl;
+        cout << obj->orderProcess() << endl;
         cout << "working";
     }
 };
@@ -149,7 +149,7 @@ int main()
     transactions gd;
     custname = gd.cname();
     custnum = gd.cnum();
-    totalPrice = gd.addBook();
+    totalPrice = gd.orderProcess();
     gd.saveTransaction();
     /*
     fstream f;
