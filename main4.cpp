@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <string.h>
 #include <regex>
+#include <fstream>
 
 using namespace std;
 
@@ -31,7 +32,6 @@ class customerDetails // parent
             while (!valid) {
                 cout << "Enter name: ";
                 cin >> fname >> lname;
-                //string::strcat(fname, lname);
                 name = fname + " " + lname;
                 if (regex_match(name, pattern)) {
                     valid = true;
@@ -128,21 +128,37 @@ class orderCalc : public customerDetails {
     }
 };
 
+
+
 int main()
 {
     cout << "### BOOKSTORE MANAGEMENT PROGRAM ###" << endl;
-    string custname, custnum;
+    string custname, custnum, xyz;
     int totalPrice;
     orderCalc gd;
     custname = gd.cname();
     custnum = gd.cnum();
     totalPrice = gd.addBook();
 
+    fstream f;
+    f.open("transaction.txt", ios::app);
+    if (!f)
+        ofstream MyFile("transaction.txt");
+    else {
+        f << "\n" << custname << "\t\t\t\t" << custnum << "\t\t\t\t" << totalPrice;
+        cout << "Data appended successfully\n";
+        f.close();
+       
+    }
+    /*
+
     cout << "------------------------------------------------" << endl;
     cout << "Customer Name:" << custname << endl;
     cout << "Customer Number:" << custnum << endl;
     cout << "Customer Bill:" << totalPrice << endl;
     cout << "------------------------------------------------" << endl;
+    */
+   
     return 0;
     getch();
 }
