@@ -31,7 +31,6 @@ class customerDetails // parent
             while (!valid) {
                 cout << "Enter name: ";
                 cin >> fname >> lname;
-                //string::strcat(fname, lname);
                 name = fname + " " + lname;
                 if (regex_match(name, pattern)) {
                     valid = true;
