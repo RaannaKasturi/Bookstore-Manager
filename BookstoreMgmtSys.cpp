@@ -2,24 +2,9 @@
 #include <string> // for storing characters in 1D array and string manipulation
 #include <regex> // for setting regular expression and verification of the user input
 #include <fstream> // for creating, modifying and writing the files
-//#include <ctime> // for accessing date and time
+#include <ctime> // for accessing date and time
 
 using namespace std;
-/*
-
-string books[][4] = { //books array
-    {"1", "Book 1", "Author 1", "100"},
-    {"2", "Book 2", "Author 3", "200"},
-    {"3", "Book 3", "Author 1", "300"},
-    {"4", "Book 4", "Author 3", "400"},
-    {"5", "Book 5", "Author 2", "500"},
-    {"6", "Book 6", "Author 4", "600"},
-    {"7", "Book 7", "Author 3", "700"},
-    {"8", "Book 8", "Author 1", "800"},
-    {"9", "Book 9", "Author 5", "900"},
-    {"10", "Book 10", "Author 2", "1000"}
-};
-*/
 
 string books[][4] = { //books array
     {"1", "It Ends With Us", "Collen Hoover", "100"},
@@ -236,7 +221,7 @@ int main() {
         int totalPrice, bookCount = 0;
 
         Transactions clt;
-        cout << "### BOOKSTORE MANAGEMENT PROGRAM by EB, NK & PK ###" << endl;
+        cout << "### BOOKSTORE MANAGEMENT SYSTEM by EB, NK & PK ###" << endl;
 
         custname = clt.cname(); // takes in customer's name and verifies it
         custnum = clt.cnum(); // takes in customer's contact number and verifies it
@@ -245,7 +230,7 @@ int main() {
         clt.saveTransaction(orderID, custname, custnum, totalPrice, purchased, bookCount); // prints the formatted bill in console
         clt.printBill(custname, custnum, orderID, purchased, totalPrice, bookCount); // creates .txt file w.r.t. bill number and writes formatted bill in it
 
-        cout << "Enter 0 to exit or any other key to continue: ";
+        cout << "Enter 0 to terminate program or any other key to continue: ";
         string choice;
         cin >> choice;
         if (choice == "0") {
