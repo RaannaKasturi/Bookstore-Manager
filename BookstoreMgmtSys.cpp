@@ -7,16 +7,16 @@
 using namespace std;
 
 string books[][4] = { //books array
-    {"1", "It Ends With Us", "Collen Hoover", "100"},
-    {"2", "Milk and Honey", "Rupi Kaur", "200"},
-    {"3", "Call Me by Your Name", "Andre Aciman", "300"},
-    {"4", "Nexus Sentinels", "Nayan Kasturi", "400"},
-    {"5", "Verity", "Collen Hoover", "500"},
-    {"6", "That Sapphire Night", "Swastika Jha", "600"},
-    {"7", "Sorry You're Not My Type", "Sudeep Nagarkar", "700"},
-    {"8", "The Fault In Our Stars", "John Green", "800"},
-    {"9", "After", "Anna Todd", "900"},
-    {"10", "Healing Words", "Alexandra Vasiliu", "1000"}
+    {"1", "It Ends With Us", "(Collen Hoover)", "100"},
+    {"2", "Milk and Honey", "(Rupi Kaur)", "200"},
+    {"3", "Call Me by Your Name", "(Andre Aciman)", "300"},
+    {"4", "Nexus Sentinels", "(Nayan Kasturi)", "400"},
+    {"5", "Verity", "(Collen Hoover)", "500"},
+    {"6", "That Sapphire Night", "(Swastika Jha)", "600"},
+    {"7", "Sorry You're Not My Type", "(Sudeep Nagarkar)", "700"},
+    {"8", "The Fault In Our Stars", "(John Green)", "800"},
+    {"9", "After", "(Anna Todd)", "900"},
+    {"10", "Healing Words", "(Alexandra Vasiliu)", "1000"}
 };
 
 class CustomerDetails { // stores and returns customer details
@@ -131,15 +131,10 @@ class Transactions: public OrderCalc { // child class storing transaction histor
         }
 
         void writeTXT (string orderID, string custname, string custnum, int totalPrice){ // creates and writes the transaction in .txt file
-            time_t now = time(0);
-            char dt[80];
-            strftime(dt, 80, "%Y%m%d%H%M", localtime(&now));
-            string currentTime(dt);
-            string filename = currentTime + ".txt";
             fstream f;
-            f.open(filename, ios::app);
+            f.open("transactions.txt", ios::app);
             if (!f) {
-                ofstream MyFile(filename);
+                ofstream MyFile("transactions.txt");
                 f << orderID << "\t\t\t" << custname << "\t\t\t" << custnum << "\t\t\t₹" << totalPrice <<"\n";
                 cout << "Bill Printed Successfully" << endl;
                 f.close();

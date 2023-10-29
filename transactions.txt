@@ -1,0 +1,4 @@
+ABOID_1			John Doe			8767932277			₹3500
+ABOID_2			Natasha Romanoff			9767287799			₹2800
+ABOID_1			John Doe			9765826985			₹0
+ABOID_1			John Doe			9458762039			₹1300
