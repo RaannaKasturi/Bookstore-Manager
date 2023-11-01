@@ -4,7 +4,7 @@ The Bookstore Management program is a comprehensive and colsole-based, yet user-
 
 -----
 ### Program Demo:
-<a href="https://youtu.be/dIaDElQodRs">
+<a href="https://youtu.be/dIaDElQodRs" target="_blank">
     <img src="https://github.com/RaannaKasturi/Bookstore-Manager/blob/main/Bookstore%20Mgmt%20Sys%20YT%20Thumbnail.png" height="300" alt="Bookstore Mgmt Sys YT Demo"/>
 </a>
 
